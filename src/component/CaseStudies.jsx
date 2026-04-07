@@ -1,169 +1,179 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, ArrowUpRight } from 'lucide-react'
+import { RiCheckLine, RiArrowRightUpLine, RiTimeLine } from 'react-icons/ri'
+
+const cases = [
+  {
+    id: 1,
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80',
+    title: 'Enterprise Data Breach Investigation',
+    client: 'Fortune 500 Tech Company',
+    challenge: 'Identify unauthorized access and data exfiltration methods across a globally distributed infrastructure.',
+    outcome: 'Recovered full attack chain across 47 servers; three threat actors identified and arrested.',
+    metrics: ['127 TB data analyzed', '45 days duration', '99.8% accuracy'],
+    timeline: 'Q3 2023',
+    tag: 'Network',
+  },
+  {
+    id: 2,
+    image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=600&q=80',
+    title: 'Mobile Device Evidence Recovery',
+    client: 'Federal Law Enforcement',
+    challenge: 'Extract admissible evidence from heavily encrypted smartphones held under legal seal.',
+    outcome: 'Recovered deleted communications proving coordination; all evidence admitted in court.',
+    metrics: ['52 devices processed', '18,000+ messages recovered', '100% chain maintained'],
+    timeline: 'Q1 2024',
+    tag: 'Mobile',
+  },
+  {
+    id: 3,
+    image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=600&q=80',
+    title: 'Ransomware Attack Attribution',
+    client: 'Healthcare Organization',
+    challenge: 'Trace ransomware origin, assess damage scope, and restore operations with minimal disruption.',
+    outcome: 'Identified APT group; 92% of encrypted data recovered within 24 hours.',
+    metrics: ['4.2 PB data recovered', '14 CVEs traced', '24-hour response'],
+    timeline: 'Q2 2024',
+    tag: 'Malware',
+  },
+]
+
+const stagger = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.18, delayChildren: 0.1 } },
+}
+const slideIn = {
+  hidden: { opacity: 0, x: -30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.65, ease: 'easeOut' } },
+}
 
 export default function CaseStudies() {
-  const cases = [
-    {
-      id: 1,
-      title: 'Enterprise Data Breach Investigation',
-      client: 'Fortune 500 Tech Company',
-      challenge: 'Identify unauthorized access and data exfiltration methods',
-      outcome: 'Recovered attack chain across 47 servers; arrested 3 threat actors',
-      metrics: ['127 TB data analyzed', '45 days duration', '99.8% accuracy'],
-      timeline: 'Q3 2023',
-    },
-    {
-      id: 2,
-      title: 'Mobile Device Evidence Recovery',
-      client: 'Federal Law Enforcement',
-      challenge: 'Extract evidence from encrypted smartphones under legal hold',
-      outcome: 'Recovered deleted communications proving coordination of illegal activity',
-      metrics: ['52 devices processed', '18,000+ messages recovered', '100% chain maintained'],
-      timeline: 'Q1 2024',
-    },
-    {
-      id: 3,
-      title: 'Ransomware Attack Attribution',
-      client: 'Healthcare Organization',
-      challenge: 'Trace ransomware origin and assess damage scope',
-      outcome: 'Identified APT group, recovered 92% of encrypted data',
-      metrics: ['4.2 PB data recovered', '14 CVEs traced', '24-hour response'],
-      timeline: 'Q2 2024',
-    },
-  ]
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const caseVariants = {
-    hidden: { opacity: 0, x: -30 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.6, ease: 'easeOut' },
-    },
-  }
-
   return (
-    <section id="cases" className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute top-1/2 right-0 w-96 h-96 bg-[#207eff]/5 rounded-full blur-3xl"></div>
+    <section
+      id="cases"
+      className="py-28 bg-white relative overflow-hidden"
+      style={{ fontFamily: "'Georgia', serif" }}
+    >
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(to right, transparent, rgba(32,126,255,0.2), transparent)' }} />
+      <div className="absolute top-0 right-0 w-80 h-80 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(32,126,255,0.06) 0%, transparent 70%)' }} />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: '-100px' }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          transition={{ duration: 0.65 }}
+          viewport={{ once: true, margin: '-80px' }}
+          className="max-w-3xl mx-auto text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-black mb-6">
-            Notable Cases
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#207eff] to-[#0a5cdb]">
-              & Investigations
-            </span>
+          <span
+            className="inline-block mb-5 text-xs uppercase tracking-[0.28em] px-4 py-2 rounded-full border"
+            style={{ fontFamily: "'Courier New', monospace", color: '#207eff', borderColor: 'rgba(32,126,255,0.3)', background: 'rgba(32,126,255,0.05)' }}
+          >
+            Proven Track Record
+          </span>
+          <h2 className="text-5xl font-normal text-gray-900 leading-tight mb-5">
+            Notable Cases <br />
+            <em style={{ color: '#207eff' }}>&amp; Investigations</em>
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Proven track record of successful investigations across diverse sectors and complexity levels.
+          <p className="text-lg text-gray-500 leading-relaxed">
+            Successful investigations across diverse sectors and complexity levels, each with measurable, court-verified outcomes.
           </p>
         </motion.div>
 
-        {/* Case Studies */}
+        {/* Cases list */}
         <motion.div
-          variants={containerVariants}
+          variants={stagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="space-y-6"
+          viewport={{ once: true, margin: '-80px' }}
+          className="space-y-8"
         >
-          {cases.map((caseItem) => (
+          {cases.map((c, idx) => (
             <motion.div
-              key={caseItem.id}
-              variants={caseVariants}
-              whileHover={{ x: 8 }}
-              className="group relative p-8 rounded-xl border border-[#207eff]/20 bg-white hover:border-[#207eff]/40 hover:shadow-xl hover:shadow-[#207eff]/10 transition-all duration-300 cursor-pointer"
+              key={c.id}
+              variants={slideIn}
+              whileHover={{ x: 6, boxShadow: '0 20px 50px rgba(32,126,255,0.1)' }}
+              className="group relative rounded-2xl border bg-white overflow-hidden transition-all duration-300 cursor-pointer"
+              style={{ borderColor: 'rgba(32,126,255,0.15)' }}
             >
-              {/* Timeline indicator */}
-              <div className="absolute -left-4 top-8 w-8 h-8 rounded-full bg-[#207eff] border-4 border-white flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-white"></div>
+              {/* Index label */}
+              <div
+                className="absolute top-6 left-6 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white z-10"
+                style={{ background: '#207eff', fontFamily: "'Courier New', monospace" }}
+              >
+                {String(idx + 1).padStart(2, '0')}
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6">
-                {/* Main Content */}
-                <div className="md:col-span-2 space-y-4">
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#207eff] transition-colors">
-                        {caseItem.title}
-                      </h3>
-                      <p className="text-sm font-semibold text-[#207eff] mb-3">
-                        {caseItem.client}
-                      </p>
-                    </div>
-                    <motion.div
-                      initial={{ rotate: -45, opacity: 0 }}
-                      whileHover={{ rotate: 0, opacity: 1 }}
-                      className="w-10 h-10 rounded-lg bg-[#207eff]/10 flex items-center justify-center"
-                    >
-                      <ArrowUpRight size={20} className="text-[#207eff]" />
-                    </motion.div>
-                  </div>
-
-                  <div className="space-y-3 text-gray-600">
-                    <div>
-                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                        Challenge
-                      </p>
-                      <p className="text-base">{caseItem.challenge}</p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                        Outcome
-                      </p>
-                      <p className="text-base text-gray-700 font-semibold">{caseItem.outcome}</p>
-                    </div>
-                  </div>
+              <div className="grid md:grid-cols-3">
+                {/* Image */}
+                <div className="relative h-56 md:h-auto overflow-hidden">
+                  <img
+                    src={c.image}
+                    alt={c.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, transparent 60%, white)' }} />
+                  {/* Tag */}
+                  <span
+                    className="absolute top-4 right-4 text-xs uppercase tracking-widest px-3 py-1 rounded-full"
+                    style={{ fontFamily: "'Courier New', monospace", color: '#207eff', background: 'rgba(255,255,255,0.9)', border: '1px solid rgba(32,126,255,0.3)' }}
+                  >
+                    {c.tag}
+                  </span>
                 </div>
 
-                {/* Metrics */}
-                <div className="space-y-4">
-                  <div className="space-y-3">
-                    {caseItem.metrics.map((metric, idx) => (
-                      <div key={idx} className="flex items-center gap-3">
-                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-[#207eff]/20 flex items-center justify-center">
-                          <Check size={14} className="text-[#207eff]" />
+                {/* Content */}
+                <div className="md:col-span-2 p-8 pl-10">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-2xl font-normal text-gray-900 mb-1 group-hover:text-[#207eff] transition-colors duration-300">
+                        {c.title}
+                      </h3>
+                      <p className="text-xs uppercase tracking-widest" style={{ fontFamily: "'Courier New', monospace", color: '#207eff' }}>
+                        {c.client}
+                      </p>
+                    </div>
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0"
+                      style={{ background: 'rgba(32,126,255,0.1)' }}
+                    >
+                      <RiArrowRightUpLine size={20} style={{ color: '#207eff' }} />
+                    </div>
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-5 mb-6">
+                    <div>
+                      <p className="text-xs uppercase tracking-widest text-gray-400 mb-1" style={{ fontFamily: "'Courier New', monospace" }}>Challenge</p>
+                      <p className="text-sm text-gray-600 leading-relaxed">{c.challenge}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs uppercase tracking-widest text-gray-400 mb-1" style={{ fontFamily: "'Courier New', monospace" }}>Outcome</p>
+                      <p className="text-sm text-gray-800 font-semibold leading-relaxed">{c.outcome}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-4">
+                    {c.metrics.map(m => (
+                      <div key={m} className="flex items-center gap-2">
+                        <div className="w-4 h-4 rounded-full flex items-center justify-center" style={{ background: 'rgba(32,126,255,0.12)' }}>
+                          <RiCheckLine size={10} style={{ color: '#207eff' }} />
                         </div>
-                        <p className="text-sm font-medium text-gray-700">{metric}</p>
+                        <span className="text-xs text-gray-600" style={{ fontFamily: "'Courier New', monospace" }}>{m}</span>
                       </div>
                     ))}
-                  </div>
-
-                  <div className="pt-4 border-t border-[#207eff]/20">
-                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-                      Timeline
-                    </p>
-                    <p className="text-sm font-bold text-[#207eff]">{caseItem.timeline}</p>
+                    <div className="ml-auto flex items-center gap-1 text-xs text-gray-400" style={{ fontFamily: "'Courier New', monospace" }}>
+                      <RiTimeLine size={13} style={{ color: '#207eff' }} />
+                      {c.timeline}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Hover line effect */}
-              <motion.div
-                initial={{ width: 0 }}
-                whileHover={{ width: '100%' }}
-                className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-[#207eff] to-transparent rounded-b-xl"
-              />
+              {/* Bottom progress bar on hover */}
+              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-700 rounded-full" style={{ background: 'linear-gradient(to right, #207eff, transparent)' }} />
             </motion.div>
           ))}
         </motion.div>
@@ -172,14 +182,20 @@ export default function CaseStudies() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true, margin: '-80px' }}
           className="text-center mt-16"
         >
-          <button className="btn-primary text-lg">
-            Request Case Study Details
-          </button>
+          <motion.button
+            whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(32,126,255,0.3)' }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-lg text-white text-xs uppercase tracking-widest"
+            style={{ background: '#207eff', fontFamily: "'Courier New', monospace" }}
+          >
+            Request Case Study Details <RiArrowRightUpLine size={16} />
+          </motion.button>
         </motion.div>
+
       </div>
     </section>
   )
